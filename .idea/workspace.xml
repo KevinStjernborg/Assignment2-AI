@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42b50cbd-f470-46d3-a0b9-4058fe86fad1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Assignment2-AI/Greedy.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Assignment2-AI/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment2-AI/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Greedy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Search.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Knapsack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Knapsack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment2-AI/Search.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment2-AI/Search.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Search.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +31,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

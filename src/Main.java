@@ -1,6 +1,6 @@
 public class Main {
 
     public static void main(String[]args){
-        Search greedy = new Search(140, 10);
+        Search greedy = new Search(300, 10,100);
     }
 }

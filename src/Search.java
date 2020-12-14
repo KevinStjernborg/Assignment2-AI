@@ -8,10 +8,13 @@ public class Search {
     private LinkedList<Knapsack> knapsackList = new LinkedList<>();
 
 
-    public Search(int numberOfItems, int numberOfKnapsacks){
+    public Search(int numberOfItems, int numberOfKnapsacks, int numberOfIterations){
         initializeItems(numberOfItems);
         initializeKnapsacks(numberOfKnapsacks);
         greedyAlgorithm();
+        for(int i = 0; i < numberOfIterations; i++){
+            neighborhoodSearch();
+        }
     }
 
     public void initializeKnapsacks(int numberOfKnapsacks){
@@ -22,28 +25,35 @@ public class Search {
 
     public void initializeItems(int numberOfItems){
         Random rand = new Random();
-        for(int i = 0; i<numberOfItems; i++){
-            int weight = 5+ rand.nextInt(20);
-            int value = 5+ rand.nextInt(100);
-            Item item = new Item(weight,value);
-            itemList.add(item);
+        for(int i = 0; i<numberOfItems ; i++){
+            if(i < numberOfItems/2){
+                int weight = 1+ rand.nextInt(10);
+                int value = 5+ rand.nextInt(100);
+                Item item = new Item(weight,value);
+                itemList.add(item);
+            }else{
+                int weight = 1+ rand.nextInt(3);
+                int value = 5+ rand.nextInt(10);
+                Item item = new Item(weight,value);
+                itemList.add(item);
+            }
+
         }
     }
 
     public void greedyAlgorithm(){
         Collections.sort(itemList);
-       for(int i =0; i< itemList.size()-1; i++){
+       for(int i =0; i< itemList.size(); i++){
            for(int j = 0; j < knapsackList.size(); j++){
-               if(knapsackList.get(j).checkCapacity(itemList.get(i).getWeight())){
-                   knapsackList.get(j).addItem(itemList.get(i));
-                   itemList.remove(i);
-                   break;
-               }
+                   if(knapsackList.get(j).checkCapacity(itemList.get(i).getWeight())){
+                       knapsackList.get(j).addItem(itemList.get(i));
+                       itemList.remove(i);
+                   }
            }
         }
         int totalValue = 0;
        for(int i=0; i< knapsackList.size(); i++){
-            totalValue =+ knapsackList.get(i).getValue();
+            totalValue += knapsackList.get(i).getValue();
            System.out.println("Knapsack number " + i + " has a total weight of " + knapsackList.get(i).getCurrentWeight() +
                    ". It has a total value of " + knapsackList.get(i).getValue() +".");
        }
@@ -51,22 +61,28 @@ public class Search {
 
         System.out.println("End of greedy");
         System.out.println("");
-        neighborhoodSearch();
-
     }
 
       public void neighborhoodSearch(){
         Item tempItem = new Item(0,0);
         for(int i = 0; i < knapsackList.size(); i++){
-            tempItem = knapsackList.get(i).getAndRemoveItem();
+            tempItem = knapsackList.get(i).getItem();
+            if(i == knapsackList.size()-1 ){
+                if(knapsackList.get(0).addItem(tempItem)){
+                    knapsackList.get(i).removeItem(tempItem);
+
+                }
+                break;
+            }
+            if(i < knapsackList.size() &&  knapsackList.get(i+1).addItem(tempItem)){
+                knapsackList.get(i).removeItem(tempItem);
+            }
         }
-
-
-
+        greedyAlgorithm();
 
           int totalValue = 0;
           for(int i=0; i< knapsackList.size(); i++){
-              totalValue =+ knapsackList.get(i).getValue();
+              totalValue += knapsackList.get(i).getValue();
               System.out.println("Knapsack number " + i + " has a total weight of " + knapsackList.get(i).getCurrentWeight() +
                       ". It has a total value of " + knapsackList.get(i).getValue() +".");
 
