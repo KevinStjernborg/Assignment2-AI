@@ -11,6 +11,14 @@ public class Knapsack {
         currentWeight = 0;
     }
 
+    public int getValue(){
+        int value = 0;
+        for(int i = 0; i< itemList.size(); i++){
+            value += itemList.get(i).getValue();
+        }
+        return value;
+    }
+
     public int getCapacity() {
         return capacity;
     }

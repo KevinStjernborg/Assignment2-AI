@@ -42,6 +42,10 @@ public class Greedy {
                }
            }else{  // Loopa igenom alla items och kolla med resterande kvaranande items i itemlistan ifall om ett enda item ger högre value än totalen för knapsacken
                System.out.println("Knapsacks are full, terminating greedy algo");
+               System.out.println("Knapsack one has a total weight of " + knapsackOne.getCurrentWeight() +
+                       ". It has a total value of " + knapsackOne.getValue() +"." );
+               System.out.println("Knapsack two has a total weight of " + knapsackTwo.getCurrentWeight()
+                       +  ". It has a total value of " + knapsackTwo.getValue() +".");
                break;
            }
 
