@@ -58,6 +58,35 @@ public class Knapsack {
 
     }
 
+    public Item getAndRemoveItem(){
+      /*  Item item = new Item(0,0);
+        for(int i = 0; i < itemList.size(); i ++ ){
+            if(itemList.get(i).getValuePerUnit() >= item.getValuePerUnit()){
+                item = itemList.get(i);
+            }
+        }
+       */
+      Item item = itemList.getLast();
+      itemList.remove(item);
+        return item;
+    }
+
+    public Item getItem(){
+    /*    Item item = new Item(0,0);
+        for(int i = 0; i < itemList.size(); i ++ ){
+            if(itemList.get(i).getValuePerUnit() >= item.getValuePerUnit()){
+                item = itemList.get(i);
+            }
+            }
+      */
+
+        return itemList.getLast();
+    }
+
+    public int getNumberOfItems(){
+        return itemList.size();
+    }
+
     public boolean checkCapacity(int weight){
         if(currentWeight + weight <= capacity){
             return true;

@@ -9,7 +9,12 @@ public class Item implements Comparable<Item> {
     public Item(int weight, int value){
         this.weight = weight;
         this.value = value;
-        valuePerUnit =  value/weight;
+        if(value + weight == 0){
+            valuePerUnit =0;
+        }else{
+            valuePerUnit =  value/weight;
+
+        }
     }
 
     public int getWeight() {
