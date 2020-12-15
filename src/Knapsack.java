@@ -55,7 +55,10 @@ public class Knapsack {
         }else{
             return false;
         }
+    }
 
+    public void removeLastItem(){
+        itemList.removeLast();
     }
 
     public Item getAndRemoveItem(){

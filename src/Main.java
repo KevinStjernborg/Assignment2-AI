@@ -1,6 +1,12 @@
 public class Main {
 
     public static void main(String[]args){
-        Search greedy = new Search(300, 10,100);
+        int numberOfKnapsacks = 10;
+        int numberOfIterations = 10;
+
+        Search assigmentTwo = new Search(600, numberOfKnapsacks,numberOfIterations);
+        assigmentTwo.greedyAlgorithm();
+        assigmentTwo.neighborhoodSearch();
+
     }
 }
