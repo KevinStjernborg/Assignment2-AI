@@ -90,29 +90,30 @@ public class Search {
           System.out.println("Total value of "+ totalValue);
       }
 
+/*
+• Phase 3
+– Try to exclude the selected item from a knapsack, only if it can be
+replaced by one or more remaining items that increase the
+knapsack’s value.
+ */
 
-
-    public void neighborhoodSearchTwo(){
+    public void phaseThree(){
         Item tempItem = new Item(0,0);
-        for(int i = 0; i < knapsackList.size()-1; i++){
-            tempItem = knapsackList.get(i).getItem();
-                knapsackList.get(i+1).removeLastItem();
-                 knapsackList.get(i+1).addItem(tempItem);
-               if(knapsackList.get(i).addItem(itemList.getFirst())){
-               }else{
-                   System.out.println("Couldn't add item via neighborhood two");
-               }
+        for(int i = 0; i < knapsackList.size(); i++){
+            for(int j = 0; j < knapsackList.get(i).getNumberOfItems()-1; j++){
+                if(itemList.getFirst().getValue() > knapsackList.get(i).getItemByIndex(j).getValue()
+                        +knapsackList.get(i).getItemByIndex(j +1).getValue() && itemList.getFirst().getWeight() <=
+                knapsackList.get(i).getItemByIndex(j).getWeight() + knapsackList.get(i).getItemByIndex(j+1).getWeight()){
+                    knapsackList.get(i).removeItem(knapsackList.get(i).getItemByIndex(j));
+                    knapsackList.get(i).removeItem(knapsackList.get(i).getItemByIndex(j+1));
+                    knapsackList.get(i).addItem(itemList.getFirst());
+                    System.out.println("-----------------");
+                    System.out.println("Phase 3: Added!");
+                    System.out.println("-----------------");
+                }
+            }
         }
         greedyAlgorithm();
-
-        int totalValue = 0;
-        for(int i=0; i< knapsackList.size(); i++){
-            totalValue += knapsackList.get(i).getValue();
-            System.out.println("Knapsack number " + i + " has a total weight of " + knapsackList.get(i).getCurrentWeight() +
-                    ". It has a total value of " + knapsackList.get(i).getValue() +".");
-
-        }
-        System.out.println("Total value of "+ totalValue);
     }
 }
     /*
@@ -174,6 +175,31 @@ public class Search {
 
           }
           System.out.println("Total value of "+ totalValue);
+
+
+
+              public void neighborhoodSearchTwo(){
+        Item tempItem = new Item(0,0);
+        for(int i = 0; i < knapsackList.size()-1; i++){
+            tempItem = knapsackList.get(i).getItem();
+                knapsackList.get(i+1).removeLastItem();
+                 knapsackList.get(i+1).addItem(tempItem);
+               if(knapsackList.get(i).addItem(itemList.getFirst())){
+               }else{
+                   System.out.println("Couldn't add item via neighborhood two");
+               }
+        }
+        greedyAlgorithm();
+
+        int totalValue = 0;
+        for(int i=0; i< knapsackList.size(); i++){
+            totalValue += knapsackList.get(i).getValue();
+            System.out.println("Knapsack number " + i + " has a total weight of " + knapsackList.get(i).getCurrentWeight() +
+                    ". It has a total value of " + knapsackList.get(i).getValue() +".");
+
+        }
+        System.out.println("Total value of "+ totalValue);
+    }
      */
 
 

@@ -19,6 +19,10 @@ public class Knapsack {
         return value;
     }
 
+    public Item getItemByIndex(int index){
+        return itemList.get(index);
+    }
+
     public int getCapacity() {
         return capacity;
     }
