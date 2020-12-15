@@ -5,7 +5,9 @@ import java.util.Random;
 public class Search {
     private LinkedList<Item> itemList = new LinkedList<Item>();
     private LinkedList<Knapsack> knapsackList = new LinkedList<>();
-
+    private int counter = 0;
+    int maxValue = 0;
+    int totalValue = 0;
 
     public Search(int numberOfItems, int numberOfKnapsacks, int numberOfIterations){
         initializeItems(numberOfItems);
@@ -52,42 +54,53 @@ public class Search {
                    }
            }
         }
-        int totalValue = 0;
-       for(int i=0; i< knapsackList.size(); i++){
-            totalValue += knapsackList.get(i).getValue();
-           System.out.println("Knapsack number " + i + " has a total weight of " + knapsackList.get(i).getCurrentWeight() +
-                   ". It has a total value of " + knapsackList.get(i).getValue() +".");
-       }
-        System.out.println("Total value of "+ totalValue);
 
-        System.out.println("End of greedy");
+
+
+    }
+
+    public void printValue(){
+        for(int i=0; i< knapsackList.size(); i++){
+            totalValue = getTotalKnapsackValue();
+            System.out.println("Knapsack number " + i + " has a total weight of " + knapsackList.get(i).getCurrentWeight() +
+                    ". It has a total value of " + knapsackList.get(i).getValue() +".");
+        }
+        System.out.println("Total value of "+ totalValue);
         System.out.println("");
+    }
+
+    public int getTotalKnapsackValue(){
+        int value = 0;
+        for(int i = 0; i < knapsackList.size();i++){
+            value += knapsackList.get(i).getValue();
+        }
+        return value;
     }
 
       public void neighborhoodSearch(){
           Item tempItem = new Item(0,0);
-          for(int i = 0; i < knapsackList.size(); i++){
+          for(int i = 0; i < knapsackList.size(); i++) {
               tempItem = knapsackList.get(i).getItem();
-              if(i == knapsackList.size()-1 ){
-                  if(knapsackList.get(0).addItem(tempItem)){
-                      knapsackList.get(i).removeItem(tempItem);
+              for (int j = 0; j < knapsackList.size(); j++) {
+                  if (j == i) {
+                  } else if(knapsackList.get(j).addItem(tempItem)) {
+                    knapsackList.get(i).removeItem(tempItem);
                   }
-                  break;
               }
-              if(i < knapsackList.size() &&  knapsackList.get(i+1).addItem(tempItem)){
-                  knapsackList.get(i).removeItem(tempItem);
-              }
+
           }
           greedyAlgorithm();
 
-          int totalValue = 0;
-          for(int i=0; i< knapsackList.size(); i++){
-              totalValue += knapsackList.get(i).getValue();
-              System.out.println("Knapsack number " + i + " has a total weight of " + knapsackList.get(i).getCurrentWeight() +
-                      ". It has a total value of " + knapsackList.get(i).getValue() +".");
-
+          if(totalValue> maxValue){
+              maxValue = totalValue;
+          }else{
+              counter++;
           }
-          System.out.println("Total value of "+ totalValue);
+         if(counter>5){
+              System.out.println("Exiting. Counter = " + counter);
+              System.exit(0);
+          }
+
       }
 
 /*
@@ -200,6 +213,34 @@ knapsack’s value.
         }
         System.out.println("Total value of "+ totalValue);
     }
+     */
+
+    /*
+          public void neighborhoodSearch(){
+          Item tempItem = new Item(0,0);
+          for(int i = 0; i < knapsackList.size(); i++){
+              tempItem = knapsackList.get(i).getItem();
+              if(i == knapsackList.size()-1 ){
+                  if(knapsackList.get(0).addItem(tempItem)){
+                      knapsackList.get(i).removeItem(tempItem);
+                  }
+                  break;
+              }
+              if(i < knapsackList.size() &&  knapsackList.get(i+1).addItem(tempItem)){
+                  knapsackList.get(i).removeItem(tempItem);
+              }
+          }
+          greedyAlgorithm();
+
+          int totalValue = 0;
+          for(int i=0; i< knapsackList.size(); i++){
+              totalValue += knapsackList.get(i).getValue();
+              System.out.println("Knapsack number " + i + " has a total weight of " + knapsackList.get(i).getCurrentWeight() +
+                      ". It has a total value of " + knapsackList.get(i).getValue() +".");
+
+          }
+          System.out.println("Total value of "+ totalValue);
+      }
      */
 
 

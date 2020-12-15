@@ -20,7 +20,12 @@ public class Knapsack {
     }
 
     public Item getItemByIndex(int index){
-        return itemList.get(index);
+        if(index < getNumberOfItems()){
+            return itemList.get(index);
+        }
+        else{
+            return null;
+        }
     }
 
     public int getCapacity() {
@@ -79,14 +84,6 @@ public class Knapsack {
     }
 
     public Item getItem(){
-    /*    Item item = new Item(0,0);
-        for(int i = 0; i < itemList.size(); i ++ ){
-            if(itemList.get(i).getValuePerUnit() >= item.getValuePerUnit()){
-                item = itemList.get(i);
-            }
-            }
-      */
-
         return itemList.getLast();
     }
 

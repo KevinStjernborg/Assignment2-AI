@@ -6,12 +6,15 @@ public class Main {
         int numberOfNeighborhoodSearch = 10;
 
 
-        Search assigmentTwo = new Search(600, numberOfKnapsacks,numberOfIterations);
+        Search assigmentTwo = new Search(650, numberOfKnapsacks,numberOfIterations);
         assigmentTwo.greedyAlgorithm();
+        assigmentTwo.printValue();
 
         for(int i = 0; i< numberOfNeighborhoodSearch; i++){
             assigmentTwo.neighborhoodSearch();
+            assigmentTwo.printValue();
             assigmentTwo.phaseThree();
+
         }
 
 
